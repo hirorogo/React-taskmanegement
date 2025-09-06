@@ -19,9 +19,9 @@
 3. Firestore データ構造
 users
   └─ {uid}
-       ├─ displayName: "山田太郎"
+       ├─ displayName: "愛知太郎"
        ├─ email: "taro@example.com"
-       └─ classId: "classA"
+       └─ classId: "101"
 
 classes
   └─ {classId}
