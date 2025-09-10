@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Login from './assets/Pages/Login';
 import Home from './assets/Pages/Home';
-import ClassSelect from './assets/Pages/ClassSelect';
+import ClassSelect from './assets/Pages/ClassSelect/ClassSelect';
 import './index.css';
 
 

@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 :root {
@@ -71,7 +70,5 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
