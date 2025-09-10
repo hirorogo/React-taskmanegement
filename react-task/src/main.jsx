@@ -1,14 +1,17 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./pages/Login";
-import ClassSelect from "./pages/ClassSelect";
-import Home from "./pages/Home";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Login from './assets/Pages/Login';
 
-const router = createBrowserRouter([
-  { path: "/", element: <Login /> },
-  { path: "/class", element: <ClassSelect /> },
-  { path: "/home", element: <Home /> },
-]);
-
-export default function App() {
-  return <RouterProvider router={router} />;
+function App() {
+  return (
+    <>
+      <Login />
+    </>
+  );
 }
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
