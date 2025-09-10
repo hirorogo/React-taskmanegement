@@ -1,9 +1,9 @@
-// src/App.jsx
-import { useState } from "react";
+// src/Login.jsx
+import React, { useState } from "react";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 
-function App() {
+function Login() {
   const [user, setUser] = useState(null);
 
   // Googleログイン
@@ -54,4 +54,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
