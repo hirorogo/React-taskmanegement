@@ -3,14 +3,15 @@ import React, { useState } from "react";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 
-function Login() {
+function Login({onLogin}) {
   const [user, setUser] = useState(null);
 
-  // Googleログイン
+  // ログイン
   const handleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
       setUser(result.user);
+      if (onLogin) onLogin(result.user);
     } catch (error) {
       console.error("ログインエラー:", error);
     }

@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Edit() {
   return (
-    <div>Edit</div>
+    <>
+      <h1>編集画面</h1>
+    </>
   )
 }

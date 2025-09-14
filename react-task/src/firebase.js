@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-
+const db = getFirestore(app);
 const firebaseConfig = {
   apiKey: "AIzaSyDBMQrw6105Cyq7cJ3n66-ZlLQPeQf7dcQ",
   authDomain: "react-task-78b00.firebaseapp.com",
@@ -11,11 +11,9 @@ const firebaseConfig = {
   messagingSenderId: "721160572505",
   appId: "1:721160572505:web:f4ec44950d080e1d83eb48"
 };
-// Firebaseを初期化
 const app = initializeApp(firebaseConfig);
 
-// 認証機能を使う準備
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-export { auth, provider };
+export { auth, provider, db };
