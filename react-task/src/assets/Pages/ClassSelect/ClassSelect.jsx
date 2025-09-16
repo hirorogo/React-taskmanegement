@@ -22,6 +22,8 @@ export default function ClassSelect({ onSelect }) {
         <option value="4">4</option>
         <option value="5">5</option>
         <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
       </select>
       <label htmlFor="subject-select">あなたの学科は？</label>
       <select id="subject-select" value={subject} onChange={e => setSubject(e.target.value)}>
