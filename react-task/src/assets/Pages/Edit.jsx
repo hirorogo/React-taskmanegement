@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
+
 export default function Edit() {
   const [title, setTitle] = useState('');
   const [loading, setLoading] = useState(false);
@@ -42,4 +43,17 @@ export default function Edit() {
       </button>
     </form>
   );
+}
+function App(){
+  const [page, setPage] = useState('login');
+  const [user, setUser] = useState(null);
+  if (page === 'home') {
+    return <Home onEdit={() => setPage('edit')} />;
+  }
+
+  if (page === 'edit') {
+    return <Edit />;
+  }
+
+  return null;
 }
