@@ -7,6 +7,7 @@ import './index.css';
 import { db } from './firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
+
 function App() {
   const [page, setPage] = useState('login');
   const [user, setUser] = useState(null);
@@ -49,4 +50,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-µ
