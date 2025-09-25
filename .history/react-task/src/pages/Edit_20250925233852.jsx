@@ -264,13 +264,13 @@ function Edit({ user, onNavigate }) {
       </Card>
 
       {/* キーボードショートカットヘルプ */}
-      <Card title="キーボードショートカット">
+      <Card title="⌨️ キーボードショートカット">
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-          gap: '8px', 
+          gap: '10px', 
           fontSize: '13px',
-          color: '#666'
+          color: 'rgba(255, 255, 255, 0.8)'
         }}>
           <div>• <strong>Ctrl+1</strong>: 時間割タブ</div>
           <div>• <strong>Ctrl+2</strong>: 宿題タブ</div>
@@ -284,27 +284,31 @@ function Edit({ user, onNavigate }) {
       <Card>
         <div style={{
           display: 'flex',
-          gap: '4px',
-          marginBottom: '16px'
+          background: 'rgba(255, 255, 255, 0.1)',
+          borderRadius: '12px',
+          padding: '4px',
+          marginBottom: '20px'
         }}>
           {[
-            { key: 'timetable', label: '時間割' },
-            { key: 'homework', label: '宿題' },
-            { key: 'items', label: '持ち物' }
+            { key: 'timetable', label: '📅 時間割' },
+            { key: 'homework', label: '📚 宿題' },
+            { key: 'items', label: '🎒 持ち物' }
           ].map(tab => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               style={{
                 flex: 1,
-                padding: '10px 16px',
-                background: activeTab === tab.key ? '#007bff' : '#f8f9fa',
-                border: '1px solid #ddd',
-                color: activeTab === tab.key ? 'white' : '#333',
+                padding: '12px 16px',
+                background: activeTab === tab.key ? 'rgba(255, 255, 255, 0.9)' : 'none',
+                border: 'none',
+                color: activeTab === tab.key ? '#333' : 'rgba(255, 255, 255, 0.7)',
                 fontSize: '14px',
-                fontWeight: '400',
-                borderRadius: '4px',
-                cursor: 'pointer'
+                fontWeight: '500',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: activeTab === tab.key ? '0 5px 15px rgba(0, 0, 0, 0.1)' : 'none'
               }}
             >
               {tab.label}
@@ -385,7 +389,7 @@ function Edit({ user, onNavigate }) {
                 onClick={saveTimetable}
                 disabled={loading}
               >
-                {loading ? '保存中...' : '時間割を保存'}
+                {loading ? '保存中...' : '🔄 時間割を保存'}
               </Button>
             </div>
           )}
@@ -415,7 +419,7 @@ function Edit({ user, onNavigate }) {
                   disabled={loading}
                   style={{ width: '100%' }}
                 >
-                  {loading ? '追加中...' : '宿題を追加'}
+                  {loading ? '追加中...' : '📚 宿題を追加'}
                 </Button>
               </div>
 
@@ -462,7 +466,7 @@ function Edit({ user, onNavigate }) {
                   disabled={loading}
                   style={{ width: '100%' }}
                 >
-                  {loading ? '追加中...' : '持ち物を追加'}
+                  {loading ? '追加中...' : '🎒 持ち物を追加'}
                 </Button>
               </div>
 

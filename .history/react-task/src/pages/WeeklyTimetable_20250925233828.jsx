@@ -90,8 +90,12 @@ function WeeklyTimetable({ timetable }) {
                 <span>{name} ({periods.length}限)</span>
                 
                 {/* 展開アイコン */}
-                <span style={{ fontSize: '12px' }}>
-                  {isExpanded ? '▲' : '▼'}
+                <span style={{
+                  fontSize: '14px',
+                  transition: 'transform 0.3s ease',
+                  transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'
+                }}>
+                  ▼
                 </span>
                 
               </button>
@@ -99,9 +103,9 @@ function WeeklyTimetable({ timetable }) {
               {/* 時間割の詳細（展開された場合のみ表示） */}
               {isExpanded && (
                 <div style={{
-                  padding: '12px 16px',
-                  background: '#f8f9fa',
-                  borderTop: '1px solid #ddd'
+                  padding: '20px',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  color: '#333'
                 }}>
                   {periods.length > 0 ? (
                     <div>

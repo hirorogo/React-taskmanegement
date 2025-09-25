@@ -61,11 +61,13 @@ function WeeklyTimetable({ timetable }) {
 
           return (
             <div key={day} style={{
-              border: '1px solid #ddd',
-              borderRadius: '4px',
-              marginBottom: '12px',
+              border: '2px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '15px',
+              marginBottom: '15px',
               overflow: 'hidden',
-              background: 'white'
+              background: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)',
+              transition: 'all 0.3s ease'
             }}>
               
               {/* 曜日のヘッダー（クリック可能） */}
@@ -73,25 +75,39 @@ function WeeklyTimetable({ timetable }) {
                 onClick={() => toggleDay(day)}
                 style={{
                   width: '100%',
-                  padding: '12px 16px',
-                  background: '#f8f9fa',
+                  padding: '18px 20px',
+                  background: 'none',
                   border: 'none',
-                  color: '#333',
-                  fontSize: '14px',
-                  fontWeight: '500',
+                  color: 'white',
+                  fontSize: '16px',
+                  fontWeight: '600',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'none';
                 }}
               >
                 
-                {/* 曜日名 */}
-                <span>{name} ({periods.length}限)</span>
+                {/* 曜日名と絵文字 */}
+                <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ fontSize: '20px' }}>{emoji}</span>
+                  <span>{name} ({periods.length}限)</span>
+                </span>
                 
                 {/* 展開アイコン */}
-                <span style={{ fontSize: '12px' }}>
-                  {isExpanded ? '▲' : '▼'}
+                <span style={{
+                  fontSize: '14px',
+                  transition: 'transform 0.3s ease',
+                  transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'
+                }}>
+                  ▼
                 </span>
                 
               </button>
@@ -99,9 +115,9 @@ function WeeklyTimetable({ timetable }) {
               {/* 時間割の詳細（展開された場合のみ表示） */}
               {isExpanded && (
                 <div style={{
-                  padding: '12px 16px',
-                  background: '#f8f9fa',
-                  borderTop: '1px solid #ddd'
+                  padding: '20px',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  color: '#333'
                 }}>
                   {periods.length > 0 ? (
                     <div>

@@ -284,8 +284,10 @@ function Edit({ user, onNavigate }) {
       <Card>
         <div style={{
           display: 'flex',
-          gap: '4px',
-          marginBottom: '16px'
+          background: 'rgba(255, 255, 255, 0.1)',
+          borderRadius: '12px',
+          padding: '4px',
+          marginBottom: '20px'
         }}>
           {[
             { key: 'timetable', label: '時間割' },
@@ -385,7 +387,7 @@ function Edit({ user, onNavigate }) {
                 onClick={saveTimetable}
                 disabled={loading}
               >
-                {loading ? '保存中...' : '時間割を保存'}
+                {loading ? '保存中...' : '🔄 時間割を保存'}
               </Button>
             </div>
           )}
@@ -415,7 +417,7 @@ function Edit({ user, onNavigate }) {
                   disabled={loading}
                   style={{ width: '100%' }}
                 >
-                  {loading ? '追加中...' : '宿題を追加'}
+                  {loading ? '追加中...' : '📚 宿題を追加'}
                 </Button>
               </div>
 
@@ -462,7 +464,7 @@ function Edit({ user, onNavigate }) {
                   disabled={loading}
                   style={{ width: '100%' }}
                 >
-                  {loading ? '追加中...' : '持ち物を追加'}
+                  {loading ? '追加中...' : '🎒 持ち物を追加'}
                 </Button>
               </div>
 

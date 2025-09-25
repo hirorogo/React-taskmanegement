@@ -136,15 +136,15 @@ function App() {
         {/* エラー表示 */}
         {error && (
           <div style={{
-            background: '#f8d7da',
-            border: '1px solid #f5c6cb',
-            borderRadius: '4px',
-            padding: '12px',
-            margin: '0 0 16px 0',
-            color: '#721c24',
+            background: 'rgba(255, 0, 0, 0.1)',
+            border: '2px solid rgba(255, 0, 0, 0.3)',
+            borderRadius: '10px',
+            padding: '15px',
+            margin: '0 0 20px 0',
+            color: 'white',
             textAlign: 'center'
           }}>
-            {error}
+            ⚠️ {error}
           </div>
         )}
         
