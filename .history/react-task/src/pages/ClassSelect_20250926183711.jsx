@@ -73,7 +73,7 @@ function ClassSelect({ onSelect }) {
             fontWeight: '600',
             fontSize: '16px'
           }}>
-            学科を選択してください
+            学科は？
           </label>
           
           <select 

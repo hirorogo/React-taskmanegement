@@ -44,7 +44,7 @@ function ClassSelect({ onSelect }) {
             fontWeight: '600',
             fontSize: '16px'
           }}>
-            🎯 あなたのクラスは？
+            クラス？
           </label>
           
           <select 
@@ -64,40 +64,10 @@ function ClassSelect({ onSelect }) {
             <option value="8">8組</option>
           </select>
         </div>
-
-        {/* 学科選択 */}
-        <div style={{ marginBottom: '30px' }}>
-          <label style={{ 
-            display: 'block', 
-            marginBottom: '10px', 
-            fontWeight: '600',
-            fontSize: '16px'
-          }}>
-            学科を選択してください
-          </label>
-          
-          <select 
-            className={styles.formSelect}
-            value={subject} 
-            onChange={e => setSubject(e.target.value)}
-            style={{ width: '100%' }}
-          >
-            <option value="">学科を選択してください</option>
-            <option value="S">S科 - 理工科</option>
-            <option value="A">A科 - 機械科</option>
-            <option value="B">B科 - 電気科</option>
-            <option value="C">C科 - 電子情報科</option>
-            <option value="D">D科 - デザイン科</option>
-            <option value="E">E科-建設科</option>
-            <option value="F">機械制御科</option>
-          </select>
-        </div>
-
-        {/* 決定ボタン */}
+       {/* 決定ボタン */}
         <Button type="primary">
-          登録する
-        </Button>
-        
+          ✅ この情報で登録する
+        </Button>        
       </form>
     </Card>
   );

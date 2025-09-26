@@ -73,7 +73,7 @@ function ClassSelect({ onSelect }) {
             fontWeight: '600',
             fontSize: '16px'
           }}>
-            学科を選択してください
+            📚 あなたの学科は？
           </label>
           
           <select 
@@ -88,14 +88,13 @@ function ClassSelect({ onSelect }) {
             <option value="B">B科 - 電気科</option>
             <option value="C">C科 - 電子情報科</option>
             <option value="D">D科 - デザイン科</option>
-            <option value="E">E科-建設科</option>
-            <option value="F">機械制御科</option>
+          <option value=""
           </select>
         </div>
 
         {/* 決定ボタン */}
         <Button type="primary">
-          登録する
+          ✅ この情報で登録する
         </Button>
         
       </form>
