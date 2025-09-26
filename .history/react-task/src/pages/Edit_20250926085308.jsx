@@ -17,16 +17,8 @@ import styles from '../styles/Form.module.css';
 function Edit({ user, onNavigate }) {
   console.log('Edit コンポーネントがレンダリングされました', { 
     user: user ? user.displayName : 'なし', 
-    userUid: user ? user.uid : 'なし',
     timestamp: new Date().toLocaleTimeString() 
   });
-
-  // ユーザーが存在しない場合は即座にリダイレクト
-  if (!user) {
-    console.log('ユーザーが存在しません。ログイン画面にリダイレクトします。');
-    onNavigate('login');
-    return null; // コンポーネントをレンダリングしない
-  }
 
   // 状態管理：現在のタブ（時間割・宿題・持ち物）を覚えておく
   const [activeTab, setActiveTab] = useState('timetable');
@@ -50,25 +42,13 @@ function Edit({ user, onNavigate }) {
   const [newHomework, setNewHomework] = useState({ title: '', dueDate: '' });
   const [newItem, setNewItem] = useState({ name: '', date: '' });
 
-  // ユーザーがnullになった場合の処理
-  useEffect(() => {
-    if (!user) {
-      console.log('ユーザーが無効になったため、ログイン画面に戻ります');
-      onNavigate('login');
-    }
-  }, [user]);
-
   /**
    * データを取得する処理
    * ページが表示された時に1回だけ実行される
    */
   useEffect(() => {
     async function fetchData() {
-      if (!user) {
-        console.log('ユーザーが存在しないため、ホームページにリダイレクト');
-        onNavigate('home');
-        return;
-      }
+      if (!user) return;
 
       try {
         // ユーザー情報を取得
@@ -82,21 +62,13 @@ function Edit({ user, onNavigate }) {
           const classData = classDoc.data();
           
           if (classData) {
-            setTimetable(classData.timetable || {
-              月: { periods: [] },
-              火: { periods: [] },
-              水: { periods: [] },
-              木: { periods: [] },
-              金: { periods: [] }
-            });
+            setTimetable(classData.timetable || timetable);
             setHomework(classData.homework || {});
             setItems(classData.items || {});
           }
         }
       } catch (error) {
         console.error('データ取得エラー:', error);
-        // エラーが発生した場合もホームページに戻る
-        onNavigate('home');
       }
     }
 
@@ -125,14 +97,8 @@ function Edit({ user, onNavigate }) {
             event.preventDefault();
             // 現在のタブに応じて保存処理を実行
             if (activeTab === 'timetable') saveTimetable();
-            else if (activeTab === 'homework') {
-              // saveHomework function doesn't exist, so commenting out
-              // saveHomework();
-            }
-            else if (activeTab === 'items') {
-              // saveItems function doesn't exist, so commenting out
-              // saveItems();
-            }
+            else if (activeTab === 'homework') saveHomework();
+            else if (activeTab === 'items') saveItems();
             break;
           case 'h':
             event.preventDefault();
@@ -144,7 +110,7 @@ function Edit({ user, onNavigate }) {
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [activeTab]);
+  }, [activeTab, onNavigate]);
 
   /**
    * 時間割を保存する処理
@@ -304,10 +270,7 @@ function Edit({ user, onNavigate }) {
           
           <Button 
             type="back"
-            onClick={() => {
-              console.log('戻るボタンがクリックされました');
-              onNavigate('home');
-            }}
+            onClick={() => onNavigate('home')}
           >
             ← 戻る
           </Button>

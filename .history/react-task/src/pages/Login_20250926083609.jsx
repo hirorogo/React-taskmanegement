@@ -100,12 +100,11 @@ function Login({ onLogin }) {
         /* ユーザーがログインしていない場合 */
         <Card title="ログインページ">
           <p style={{ marginBottom: '30px', color: '#666', fontSize: '16px' }}>
-            時間割・宿題・持ち物を簡単に管理できます。
-            使用するデータはGoogleアカウントから名前とメールアドレスが取得されます。
+            時間割・宿題・持ち物を簡単に管理できます。　
           </p>
           
           <Button onClick={handleLogin}>
-            ログイン
+            🚀 Googleでログイン
           </Button>
         </Card>
       )}

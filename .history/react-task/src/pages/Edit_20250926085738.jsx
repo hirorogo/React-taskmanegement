@@ -144,7 +144,7 @@ function Edit({ user, onNavigate }) {
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [activeTab]);
+  }, [activeTab, onNavigate]);
 
   /**
    * 時間割を保存する処理

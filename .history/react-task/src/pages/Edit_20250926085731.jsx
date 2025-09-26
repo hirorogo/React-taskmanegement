@@ -101,7 +101,7 @@ function Edit({ user, onNavigate }) {
     }
 
     fetchData();
-  }, [user]);
+  }, [user, onNavigate]);
 
   // キーボードショートカット機能
   useEffect(() => {
@@ -144,7 +144,7 @@ function Edit({ user, onNavigate }) {
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [activeTab]);
+  }, [activeTab, onNavigate]);
 
   /**
    * 時間割を保存する処理

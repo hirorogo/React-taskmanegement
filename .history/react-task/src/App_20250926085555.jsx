@@ -1,5 +1,5 @@
 // App.jsx - アプリのメインコンポーネント（初心者向けの分かりやすい書き方）
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from './firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 

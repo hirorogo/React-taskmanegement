@@ -17,16 +17,8 @@ import styles from '../styles/Form.module.css';
 function Edit({ user, onNavigate }) {
   console.log('Edit コンポーネントがレンダリングされました', { 
     user: user ? user.displayName : 'なし', 
-    userUid: user ? user.uid : 'なし',
     timestamp: new Date().toLocaleTimeString() 
   });
-
-  // ユーザーが存在しない場合は即座にリダイレクト
-  if (!user) {
-    console.log('ユーザーが存在しません。ログイン画面にリダイレクトします。');
-    onNavigate('login');
-    return null; // コンポーネントをレンダリングしない
-  }
 
   // 状態管理：現在のタブ（時間割・宿題・持ち物）を覚えておく
   const [activeTab, setActiveTab] = useState('timetable');
@@ -56,7 +48,7 @@ function Edit({ user, onNavigate }) {
       console.log('ユーザーが無効になったため、ログイン画面に戻ります');
       onNavigate('login');
     }
-  }, [user]);
+  }, [user, onNavigate]);
 
   /**
    * データを取得する処理
@@ -101,7 +93,7 @@ function Edit({ user, onNavigate }) {
     }
 
     fetchData();
-  }, [user]);
+  }, [user, onNavigate]);
 
   // キーボードショートカット機能
   useEffect(() => {
@@ -144,7 +136,7 @@ function Edit({ user, onNavigate }) {
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [activeTab]);
+  }, [activeTab, onNavigate]);
 
   /**
    * 時間割を保存する処理

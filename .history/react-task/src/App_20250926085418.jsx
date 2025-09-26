@@ -1,5 +1,5 @@
 // App.jsx - アプリのメインコンポーネント（初心者向けの分かりやすい書き方）
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from './firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -38,12 +38,6 @@ function App() {
       // ユーザーがログインしていない場合は何もしない
       if (!user) return;
 
-      // 既にhomeかeditページにいる場合は、自動遷移しない
-      if (currentPage === 'home' || currentPage === 'edit') {
-        console.log('既にメインページにいるため、自動遷移をスキップ');
-        return;
-      }
-
       try {
         setLoading(true);
         setError(null);
@@ -56,10 +50,8 @@ function App() {
         if (userDoc.exists()) {
           const userData = userDoc.data();
           if (userData.classId && userData.subject) {
-            // 設定済みの場合はホーム画面へ（ログインページからの場合のみ）
-            if (currentPage === 'login') {
-              setCurrentPage('home');
-            }
+            // 設定済みの場合はホーム画面へ
+            setCurrentPage('home');
           } else {
             // 未設定の場合はクラス選択画面へ
             setCurrentPage('class');
@@ -78,7 +70,7 @@ function App() {
     }
 
     checkUserInfo();
-  }, [user, currentPage]); // userとcurrentPageの両方を監視
+  }, [user]); // userが変わった時だけ実行
 
   /**
    * ページを切り替える関数

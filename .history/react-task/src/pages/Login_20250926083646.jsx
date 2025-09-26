@@ -105,7 +105,7 @@ function Login({ onLogin }) {
           </p>
           
           <Button onClick={handleLogin}>
-            ログイン
+            🚀 Googleでログイン
           </Button>
         </Card>
       )}
