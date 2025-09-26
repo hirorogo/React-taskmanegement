@@ -278,15 +278,13 @@ function Edit({ user, onNavigate }) {
 
   return (
     <div>
-      {/* デバッグ表示（一時的） */}
       <p style={{ 
-        background: 'lightgreen', 
-        padding: '5px 10px', 
+        background: 'yellow', 
+        padding: '10px', 
         textAlign: 'center',
-        fontSize: '11px',
-        margin: '0 0 10px 0'
+        fontSize: '12px'
       }}>
-        Edit画面: {new Date().toLocaleTimeString()} - レンダリング回数を確認中
+        Edit画面が表示されています - {new Date().toLocaleTimeString()}
       </p>
       
       {/* ヘッダー */}

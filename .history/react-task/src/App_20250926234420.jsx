@@ -1,5 +1,5 @@
 // App.jsx - アプリのメインコンポーネント（初心者向けの分かりやすい書き方）
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from './firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -78,16 +78,16 @@ function App() {
     }
 
     checkUserInfo();
-  }, [user]); // userのみを監視（currentPageは条件分岐で制御）
+  }, [user, currentPage]); // userとcurrentPageの両方を監視
 
   /**
    * ページを切り替える関数
    * @param {string} pageName - 移動先のページ名
    */
-  const navigateToPage = useCallback((pageName) => {
+  const navigateToPage = (pageName) => {
     console.log('ページ遷移:', currentPage, '->', pageName);
     setCurrentPage(pageName);
-  }, [currentPage]);
+  };
 
   /**
    * ユーザーがログインした時の処理

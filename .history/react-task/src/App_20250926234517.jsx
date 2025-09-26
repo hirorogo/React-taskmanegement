@@ -84,10 +84,10 @@ function App() {
    * ページを切り替える関数
    * @param {string} pageName - 移動先のページ名
    */
-  const navigateToPage = useCallback((pageName) => {
+  const navigateToPage = (pageName) => {
     console.log('ページ遷移:', currentPage, '->', pageName);
     setCurrentPage(pageName);
-  }, [currentPage]);
+  };
 
   /**
    * ユーザーがログインした時の処理
