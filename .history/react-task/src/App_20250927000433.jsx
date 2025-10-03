@@ -40,21 +40,9 @@ function App() {
 
       // 既にhomeかeditページにいる場合は、自動遷移しない
       if (currentPage === 'home' || currentPage === 'edit') {
-        console.log('既にメインページにいるため、自動遷移をスキップ', { currentPage });
+        console.log('既にメインページにいるため、自動遷移をスキップ');
         return;
       }
-      
-      // loginページ以外からの場合は自動遷移しない（強制防止）
-      if (currentPage !== 'login') {
-        console.log('ログインページ以外からのcheckUserInfo呼び出しをスキップ', { currentPage });
-        return;
-      }
-      
-      console.log('useEffect checkUserInfo 実行開始', { 
-        currentPage, 
-        user: user?.displayName,
-        userExists: !!user 
-      });
 
       try {
         setLoading(true);
@@ -97,12 +85,7 @@ function App() {
    * @param {string} pageName - 移動先のページ名
    */
   const navigateToPage = useCallback((pageName) => {
-    console.log('ページ遷移要求:', { 
-      from: currentPage, 
-      to: pageName, 
-      timestamp: new Date().toLocaleTimeString(),
-      callStack: new Error().stack?.split('\n')[2]?.trim()
-    });
+    console.log('ページ遷移:', currentPage, '->', pageName);
     setCurrentPage(pageName);
   }, [currentPage]);
 
@@ -159,16 +142,7 @@ function App() {
     <div className={styles.app}>
       <div className={styles.container}>
         
-        {/* 一時的なデバッグ情報 */}
-      <div style={{ 
-        background: 'yellow', 
-        padding: '5px', 
-        marginBottom: '10px',
-        fontSize: '11px',
-        fontFamily: 'monospace'
-      }}>
-        現在のページ: {currentPage} | ユーザー: {user ? user.displayName : 'なし'} | 時刻: {new Date().toLocaleTimeString()}
-      </div>
+        {/* デバッグ情報を削除 */}
         
         {/* エラー表示 */}
         {error && (

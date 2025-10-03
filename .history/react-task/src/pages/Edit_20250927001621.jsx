@@ -18,8 +18,7 @@ function Edit({ user, onNavigate }) {
   console.log('Edit コンポーネントがレンダリングされました', { 
     user: user ? user.displayName : 'なし', 
     userUid: user ? user.uid : 'なし',
-    timestamp: new Date().toLocaleTimeString(),
-    hasUser: !!user
+    timestamp: new Date().toLocaleTimeString() 
   });
 
   // ユーザーが存在しない場合は即座にリダイレクト
@@ -60,7 +59,8 @@ function Edit({ user, onNavigate }) {
   useEffect(() => {
     async function fetchData() {
       if (!user) {
-        console.log('ユーザーが存在しないため、データ取得をスキップ');
+        console.log('ユーザーが存在しないため、ホームページにリダイレクト');
+        onNavigate('home');
         return;
       }
 
@@ -272,17 +272,7 @@ function Edit({ user, onNavigate }) {
 
   return (
     <div>
-      {/* 一時的なデバッグ表示 */}
-      <div style={{ 
-        background: 'lightgreen', 
-        padding: '5px', 
-        marginBottom: '10px',
-        fontSize: '11px',
-        fontFamily: 'monospace',
-        textAlign: 'center'
-      }}>
-        Edit画面表示中 - {new Date().toLocaleTimeString()} - ユーザー: {user?.displayName || 'なし'}
-      </div>
+      {/* デバッグ表示を削除 */}
       
       {/* ヘッダー */}
       <Card>

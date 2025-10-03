@@ -44,12 +44,6 @@ function App() {
         return;
       }
       
-      // loginページ以外からの場合は自動遷移しない（強制防止）
-      if (currentPage !== 'login') {
-        console.log('ログインページ以外からのcheckUserInfo呼び出しをスキップ', { currentPage });
-        return;
-      }
-      
       console.log('useEffect checkUserInfo 実行開始', { 
         currentPage, 
         user: user?.displayName,
@@ -159,16 +153,7 @@ function App() {
     <div className={styles.app}>
       <div className={styles.container}>
         
-        {/* 一時的なデバッグ情報 */}
-      <div style={{ 
-        background: 'yellow', 
-        padding: '5px', 
-        marginBottom: '10px',
-        fontSize: '11px',
-        fontFamily: 'monospace'
-      }}>
-        現在のページ: {currentPage} | ユーザー: {user ? user.displayName : 'なし'} | 時刻: {new Date().toLocaleTimeString()}
-      </div>
+        {/* デバッグ情報を削除 */}
         
         {/* エラー表示 */}
         {error && (

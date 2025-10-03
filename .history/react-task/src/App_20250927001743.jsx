@@ -159,16 +159,7 @@ function App() {
     <div className={styles.app}>
       <div className={styles.container}>
         
-        {/* 一時的なデバッグ情報 */}
-      <div style={{ 
-        background: 'yellow', 
-        padding: '5px', 
-        marginBottom: '10px',
-        fontSize: '11px',
-        fontFamily: 'monospace'
-      }}>
-        現在のページ: {currentPage} | ユーザー: {user ? user.displayName : 'なし'} | 時刻: {new Date().toLocaleTimeString()}
-      </div>
+        {/* デバッグ情報を削除 */}
         
         {/* エラー表示 */}
         {error && (

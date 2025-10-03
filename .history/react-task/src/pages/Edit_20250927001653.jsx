@@ -272,17 +272,7 @@ function Edit({ user, onNavigate }) {
 
   return (
     <div>
-      {/* 一時的なデバッグ表示 */}
-      <div style={{ 
-        background: 'lightgreen', 
-        padding: '5px', 
-        marginBottom: '10px',
-        fontSize: '11px',
-        fontFamily: 'monospace',
-        textAlign: 'center'
-      }}>
-        Edit画面表示中 - {new Date().toLocaleTimeString()} - ユーザー: {user?.displayName || 'なし'}
-      </div>
+      {/* デバッグ表示を削除 */}
       
       {/* ヘッダー */}
       <Card>
